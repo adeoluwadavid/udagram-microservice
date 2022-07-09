@@ -4,26 +4,25 @@ services:
 # Pre-testing installs
 install:
   - echo "nothing needs to be installed"
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 # Scripts to be run such as tests
 before_script:
   - echo "no tests"
 
-# script:
-#   - docker --version # print the version for logging
-#   # Build images
-#   - docker-compose -f docker-compose-build.yaml build --parallel
+script:
+  - docker --version # print the version for logging
+  # Build images
+  - docker-compose -f docker-compose-build.yaml build --parallel
   
-#   # Tag images
-#   - docker tag reverseproxy adeoluwadavid/reverseproxy:v1
-#   - docker tag udagram-api-feed adeoluwadavid/udagram-api-feed:v1
-#   - docker tag udagram-api-user adeoluwadavid/udagram-api-user:v1
-#   - docker tag udagram-frontend adeoluwadavid/udagram-frontend:v1
+  # Tag images
+  - docker tag reverseproxy adeoluwadavid/reverseproxy:v1
+  - docker tag udagram-api-feed adeoluwadavid/udagram-api-feed:v1
+  - docker tag udagram-api-user adeoluwadavid/udagram-api-user:v1
+  - docker tag udagram-frontend adeoluwadavid/udagram-frontend:v1
 
-# after_success:
-#   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-#   - docker push adeoluwadavid/reverseproxy:v1
-#   - docker push adeoluwadavid/udagram-api-feed:v1
-#   - docker push adeoluwadavid/udagram-api-user:v1
-#   - docker push adeoluwadavid/udagram-frontend:v1
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push adeoluwadavid/reverseproxy:v1
+  - docker push adeoluwadavid/udagram-api-feed:v1
+  - docker push adeoluwadavid/udagram-api-user:v1
+  - docker push adeoluwadavid/udagram-frontend:v1
