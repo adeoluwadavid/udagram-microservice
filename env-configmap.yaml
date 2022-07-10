@@ -8,6 +8,8 @@ data:
   POSTGRES_HOST: adewolek9.cgbusbczudwb.us-east-1.rds.amazonaws.com
   JWT_SECRET: adewole123456
   URL: http://localhost:8100
+  POSTGRES_USERNAME: adewolek9
+  POSTGRES_PASSWORD: adewolek9
 metadata:
   name: env-config
   
