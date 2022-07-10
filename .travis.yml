@@ -15,14 +15,14 @@ script:
   - docker-compose -f docker-compose-build.yaml build --parallel
   
   # Tag images
-  # - docker tag reverseproxy adeoluwadavid/reverseproxy:v1
-  # - docker tag udagram-api-feed adeoluwadavid/udagram-api-feed:v1
-  # - docker tag udagram-api-user adeoluwadavid/udagram-api-user:v1
+  - docker tag reverseproxy adeoluwadavid/reverseproxy:v1
+  - docker tag udagram-api-feed adeoluwadavid/udagram-api-feed:v1
+  - docker tag udagram-api-user adeoluwadavid/udagram-api-user:v1
   - docker tag udagram-frontend adeoluwadavid/udagram-frontend:v3
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  # - docker push adeoluwadavid/reverseproxy:v1
-  # - docker push adeoluwadavid/udagram-api-feed:v1
-  # - docker push adeoluwadavid/udagram-api-user:v1
+  - docker push adeoluwadavid/reverseproxy:v1
+  - docker push adeoluwadavid/udagram-api-feed:v1
+  - docker push adeoluwadavid/udagram-api-user:v1
   - docker push adeoluwadavid/udagram-frontend:v3
